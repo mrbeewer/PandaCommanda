@@ -25,3 +25,14 @@ create system to keep mobile player active in monitoring energy supplies and rea
 
 Comments***
 If anyone has any suggestions or has any questions please let me know!
+
+Over the span of the next week or so I will be editing the scripts to make the human readable. Currently its not as neat as I would like but in time I will be adding documentation and streamlining the code. If you have any questions on how something works or just would like to let me know of a better way to implement a feature I am all ears!
+
+
+
+Credits**
+Code:
+James Robinson
+
+Design:
+James Robinson
