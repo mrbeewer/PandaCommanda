@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d8eca79dfb2d547eea7262eddd2dda65
+timeCreated: 1463342166
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - Dmg1: {instanceID: 0}
+  - Dmg2: {instanceID: 0}
+  - EnergySupply: {fileID: 190306, guid: 9ec2923162f3240698f747182ffff0dc, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
