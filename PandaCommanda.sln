@@ -1,0 +1,35 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{A004178F-379E-075E-FA95-22F41417EB96}") = "PandaCommanda", "Assembly-CSharp-firstpass.csproj", "{3B0FC364-0E26-D181-8E4D-24960C0D073F}"
+EndProject
+Project("{A004178F-379E-075E-FA95-22F41417EB96}") = "PandaCommanda", "Assembly-CSharp.csproj", "{7E0BCD37-E865-C985-51AE-FC9C0285AE26}"
+EndProject
+Project("{A004178F-379E-075E-FA95-22F41417EB96}") = "PandaCommanda", "Assembly-CSharp-Editor.csproj", "{5D0ED5BC-6B98-10AB-BF5E-F88942702722}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3B0FC364-0E26-D181-8E4D-24960C0D073F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B0FC364-0E26-D181-8E4D-24960C0D073F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B0FC364-0E26-D181-8E4D-24960C0D073F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B0FC364-0E26-D181-8E4D-24960C0D073F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E0BCD37-E865-C985-51AE-FC9C0285AE26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E0BCD37-E865-C985-51AE-FC9C0285AE26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E0BCD37-E865-C985-51AE-FC9C0285AE26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E0BCD37-E865-C985-51AE-FC9C0285AE26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D0ED5BC-6B98-10AB-BF5E-F88942702722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D0ED5BC-6B98-10AB-BF5E-F88942702722}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D0ED5BC-6B98-10AB-BF5E-F88942702722}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D0ED5BC-6B98-10AB-BF5E-F88942702722}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
