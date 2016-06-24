@@ -64,7 +64,7 @@ public class BlockControl : Damagable {
 		if (!NetworkServer.active) {
 			return;
 		}
-		int chance = Random.Range (0, 100);
+		int chance = Random.Range (0, 100); // chance to spawn energysupply
 
 		if (chance < 10) {
 			GameObject temp = Instantiate (EnergySupply) as GameObject;
@@ -74,8 +74,9 @@ public class BlockControl : Damagable {
 		}
 	}
 
-	public void TouchChangeColorRed(){
-		if (colorname == "Black") {
+	public void TouchChangeColor(){
+		if (colorname == "Black" && Application.isMobilePlatform) {
+			
 			if (FindObjectOfType<BlockChanger>().ChangeToRed) {
 				colorname = "Red";
 				GetComponent<Renderer> ().material.color = Color.red;
@@ -87,7 +88,6 @@ public class BlockControl : Damagable {
 				isRed = false;
 				ClientScene.localPlayers [0].gameObject.GetComponent<BlockChanger> ().CmdTouchChangeColorBlue (netId);
 			}
-
 		}
 	}
 

@@ -5,10 +5,10 @@ using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine.UI;
 
 public class ShipWeaponControl : NetworkBehaviour {
-	public float bulletSpeed = 30;
-	public GameObject bullet;
+	public float BulletSpeed = 30;
+	public GameObject Bullet;
 	bool canShoot = true;
-	public int shootFreq = 1; // 
+	public float ShootFreq; // per second
 	float freqCounter;
 
 	bool isRed = false;
@@ -25,7 +25,7 @@ public class ShipWeaponControl : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		freqCounter = 30 / shootFreq;
+		freqCounter = 30 / ShootFreq;
 	}
 	
 	// Update is called once per frame
@@ -36,7 +36,7 @@ public class ShipWeaponControl : NetworkBehaviour {
 
 			//Fire1 is space on desktop and a button on mobile
 			if (CrossPlatformInputManager.GetButtonDown("Fire1")) {
-				CmdShoot (bulletSpeed);
+				CmdShoot (BulletSpeed);
 			}
 
 			if (Input.GetKeyDown(KeyCode.F)) {
@@ -57,13 +57,13 @@ public class ShipWeaponControl : NetworkBehaviour {
 	/// <param name="speedToFireBullet">Speed to fire bullet.</param>
 	[Command]
 	void CmdShoot(float speedToFireBullet){
-		if (canShoot && FindObjectOfType<EnergyControls>().DepletEnergy(IsRed, bullet.GetComponent<Bullet>().EnergyNeeded)) {
-			GameObject temp = Instantiate (bullet) as GameObject;
+		if (canShoot && FindObjectOfType<EnergyControls>().DepletEnergy(IsRed, Bullet.GetComponent<Bullet>().EnergyNeeded)) {
+			GameObject temp = Instantiate (Bullet) as GameObject;
 			temp.transform.position = gameObject.transform.FindChild ("Gun").position;
 			temp.transform.rotation = gameObject.transform.FindChild ("Gun").rotation;
 
 			temp.GetComponent<Bullet> ().isRed = isRed;
-			RpcShoot (bulletSpeed, isRed);
+			RpcShoot (BulletSpeed, isRed);
 			StartCoroutine (ShootTimer ());
 
 		}
@@ -79,7 +79,7 @@ public class ShipWeaponControl : NetworkBehaviour {
 		if (isServer) {
 			return;
 		}
-			GameObject temp = Instantiate (bullet) as GameObject;
+			GameObject temp = Instantiate (Bullet) as GameObject;
 			temp.transform.position = gameObject.transform.FindChild ("Gun").position;
 			temp.transform.rotation = gameObject.transform.FindChild ("Gun").rotation;
 			temp.GetComponent<Bullet> ().isRed = _isred;
@@ -90,7 +90,8 @@ public class ShipWeaponControl : NetworkBehaviour {
 
 	IEnumerator ShootTimer(){
 		canShoot = false;
-		yield return new WaitForSeconds (1 / shootFreq);
+		print (ShootFreq);
+		yield return new WaitForSeconds (1f / ShootFreq);
 		canShoot = true;
 	}
 
