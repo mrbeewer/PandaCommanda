@@ -75,8 +75,8 @@ public class BlockControl : Damagable {
 	}
 
 	public void TouchChangeColor(){
-		if (colorname == "Black" && Application.isMobilePlatform) {
-			
+		if (colorname == "Black" && (!NetworkServer.active || Application.isMobilePlatform)) {
+
 			if (FindObjectOfType<BlockChanger>().ChangeToRed) {
 				colorname = "Red";
 				GetComponent<Renderer> ().material.color = Color.red;

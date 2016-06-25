@@ -2,15 +2,22 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class Bullet : Projectile {
+public class Rocket : Projectile {
+
 
 
 	void Start () {
+		projectileSpeed = 10;
+		Damage = 100;
 
-		startposition = transform.position;
+
+		if (NetworkServer.active) {
+			//startposition = transform.position;
+		}
+
 		GetComponent<Rigidbody> ().velocity = transform.up * projectileSpeed;
 
-		CmdChangeColor ();
+		ChangeColor ();
 	}
 
 	// Update is called once per frame
@@ -30,6 +37,7 @@ public class Bullet : Projectile {
 				if (col.gameObject.GetComponent<Damagable> ().isRed == isRed && col.gameObject.GetComponent<Damagable> ().colorname != "Black") {
 					col.gameObject.GetComponent<Damagable> ().TakeDamage (Damage);
 				} 
+				Destroy (gameObject);
 			}
 		}
 
@@ -37,8 +45,13 @@ public class Bullet : Projectile {
 			Destroy (gameObject);
 		}
 
+		//HACK
 		//Destroy (gameObject);
+
+
 	}
-		
-		
+
+	void ChangeColor(){
+		GetComponent<Renderer> ().material.color = isRed ? Color.red : Color.blue;
+	}
 }

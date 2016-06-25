@@ -5,13 +5,14 @@ using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine.UI;
 
 public class ShipWeaponControl : NetworkBehaviour {
-	public float BulletSpeed = 30;
-	public GameObject Bullet;
+	public float ProjectileSpeed = 30;
+	public GameObject Projectile;
 	bool canShoot = true;
 	public float ShootFreq; // per second
 	float freqCounter;
 
-	bool isRed = false;
+	[SyncVar]
+	public bool isRed = false;
 
 	public bool IsRed {
 		get {
@@ -36,7 +37,7 @@ public class ShipWeaponControl : NetworkBehaviour {
 
 			//Fire1 is space on desktop and a button on mobile
 			if (CrossPlatformInputManager.GetButtonDown("Fire1")) {
-				CmdShoot (BulletSpeed);
+				CmdShoot (ProjectileSpeed);
 			}
 
 			if (Input.GetKeyDown(KeyCode.F)) {
@@ -57,13 +58,13 @@ public class ShipWeaponControl : NetworkBehaviour {
 	/// <param name="speedToFireBullet">Speed to fire bullet.</param>
 	[Command]
 	void CmdShoot(float speedToFireBullet){
-		if (canShoot && FindObjectOfType<EnergyControls>().DepletEnergy(IsRed, Bullet.GetComponent<Bullet>().EnergyNeeded)) {
-			GameObject temp = Instantiate (Bullet) as GameObject;
+		if (canShoot && FindObjectOfType<EnergyControls>().DepletEnergy(IsRed, Projectile.GetComponent<Projectile>().EnergyNeeded)) {
+			GameObject temp = Instantiate (Projectile) as GameObject;
 			temp.transform.position = gameObject.transform.FindChild ("Gun").position;
 			temp.transform.rotation = gameObject.transform.FindChild ("Gun").rotation;
 
-			temp.GetComponent<Bullet> ().isRed = isRed;
-			RpcShoot (BulletSpeed, isRed);
+			temp.GetComponent<Projectile> ().isRed = isRed;
+			RpcShoot (ProjectileSpeed, isRed);
 			StartCoroutine (ShootTimer ());
 
 		}
@@ -79,10 +80,10 @@ public class ShipWeaponControl : NetworkBehaviour {
 		if (isServer) {
 			return;
 		}
-			GameObject temp = Instantiate (Bullet) as GameObject;
+			GameObject temp = Instantiate (Projectile) as GameObject;
 			temp.transform.position = gameObject.transform.FindChild ("Gun").position;
 			temp.transform.rotation = gameObject.transform.FindChild ("Gun").rotation;
-			temp.GetComponent<Bullet> ().isRed = _isred;
+			temp.GetComponent<Projectile> ().isRed = _isred;
 
 			//temp.GetComponent<Rigidbody> ().velocity = temp.transform.up * speedToFireBullet;
 
