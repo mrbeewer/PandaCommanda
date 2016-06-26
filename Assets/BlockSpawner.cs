@@ -6,10 +6,18 @@ public class BlockSpawner : NetworkBehaviour {
 
 	public Transform[] spawnPoints;
 	public GameObject Block;
+
+	public int currentBlockCount = 0;
+	public int maxBlocksPerLevel = 20;
+	public int currentLevel = 0;
+
+	private bool continueLevel = false;
+
 	// Use this for initialization
 	void Start () {
 		if (NetworkServer.active) {
-			InvokeRepeating ("StartSpawn", 4, 1);
+			//InvokeRepeating ("StartSpawn", 4, 1);
+			InitiateLevel();
 		}
 
 	}
@@ -19,9 +27,18 @@ public class BlockSpawner : NetworkBehaviour {
 	
 	}
 
+	void InitiateLevel() {
+		currentLevel++;
+		continueLevel = true;
+		StartCoroutine (InvokeRepeatingWithStop (4, 1));
+	}
+
 
 	void StartSpawn(){
-		SpawnBlockRandomColor (10);
+		if (currentBlockCount < maxBlocksPerLevel)
+			SpawnBlockRandomColor (10);
+		else
+			continueLevel = false;
 	}
 
 	/// <summary>
@@ -30,7 +47,7 @@ public class BlockSpawner : NetworkBehaviour {
 	/// <returns>The block random color.</returns>
 	/// <param name="speed">Speed.</param>
 	public GameObject SpawnBlockRandomColor(float speed){
-		
+		currentBlockCount++;
 		GameObject temp = Instantiate (Block) as GameObject;
 		BlockControl cont = temp.GetComponent<BlockControl> ();
 		temp.transform.position = PickRandomSpawnPoint ();
@@ -76,5 +93,13 @@ public class BlockSpawner : NetworkBehaviour {
 		yield return new WaitForSeconds (time);
 		SpawnBlockRandomColor (speed);
 
+	}
+
+	IEnumerator InvokeRepeatingWithStop(float time, float repeatRate) {
+		yield return new WaitForSeconds (time);
+		do {
+			StartSpawn();
+			yield return new WaitForSeconds(repeatRate);
+		} while (true);
 	}
 }

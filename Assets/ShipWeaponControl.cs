@@ -8,7 +8,7 @@ public class ShipWeaponControl : NetworkBehaviour {
 	public float BulletSpeed = 30;
 	public GameObject Bullet;
 	bool canShoot = true;
-	public float ShootFreq; // per second
+	public float ShootFreq = 30; // per second
 	float freqCounter;
 
 	bool isRed = false;
