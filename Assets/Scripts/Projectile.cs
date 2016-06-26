@@ -8,12 +8,12 @@ public class Projectile : NetworkBehaviour {
 	public bool SpawnedOnThisClient = false;
 	public int Damage = 10;
 
-
 	public bool isRed = false;
 
 	public int EnergyNeeded = 10;
 
-	protected float projectileSpeed = 10;
+	public float projectileSpeed = 10;
+	public float ShootFreq = 10;
 	// Use this for initialization
 	void Start () {
 

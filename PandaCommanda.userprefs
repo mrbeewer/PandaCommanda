@@ -1,20 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MobileControls.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Lobby/Scripts/Lobby/LobbyManager.cs">
     <Files>
-      <File FileName="Assets/Lobby/Scripts/Lobby/LobbyMainMenu.cs" Line="16" Column="42" />
-      <File FileName="Assets/BlockSpawner.cs" Line="38" Column="30" />
-      <File FileName="Assets/BlockControl.cs" Line="78" Column="85" />
-      <File FileName="Assets/BlockChanger.cs" Line="24" Column="35" />
-      <File FileName="Assets/Scripts/ShipController.cs" Line="6" Column="47" />
-      <File FileName="Assets/Scripts/SyncPosWithServer.cs" Line="20" Column="38" />
-      <File FileName="Assets/ShipWeaponControl.cs" Line="62" Column="61" />
-      <File FileName="Assets/Scripts/Bullet.cs" Line="6" Column="2" />
-      <File FileName="Assets/Scripts/Projectile.cs" Line="14" Column="31" />
-      <File FileName="Assets/Scripts/Rocket.cs" Line="7" Column="2" />
-      <File FileName="Assets/EnergyControls.cs" Line="20" Column="38" />
-      <File FileName="Assets/MobileControls.cs" Line="33" Column="23" />
-      <File FileName="Assets/Scripts/TeamSelect.cs" Line="1" Column="1" />
+      <File FileName="Assets/ShipWeaponControl.cs" Line="19" Column="20" />
+      <File FileName="Assets/Energytest.cs" Line="101" Column="19" />
+      <File FileName="Assets/Scripts/Projectile.cs" Line="16" Column="30" />
+      <File FileName="Assets/Scripts/Rocket.cs" Line="11" Column="16" />
+      <File FileName="Assets/Scripts/Bullet.cs" Line="10" Column="18" />
+      <File FileName="Assets/Lobby/Scripts/Lobby/LobbyManager.cs" Line="417" Column="4" />
+      <File FileName="Assets/Lobby/Scripts/Lobby/LobbyMainMenu.cs" Line="31" Column="35" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

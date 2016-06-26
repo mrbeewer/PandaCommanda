@@ -5,11 +5,11 @@ using UnityEngine.Networking;
 public class Rocket : Projectile {
 
 
-
 	void Start () {
 		projectileSpeed = 10;
+		ShootFreq = 2;
 		Damage = 100;
-
+	
 
 		if (NetworkServer.active) {
 			//startposition = transform.position;

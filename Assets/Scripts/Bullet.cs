@@ -6,7 +6,8 @@ public class Bullet : Projectile {
 
 
 	void Start () {
-
+		projectileSpeed = 20;
+		ShootFreq = 20;
 		startposition = transform.position;
 		GetComponent<Rigidbody> ().velocity = transform.up * projectileSpeed;
 
