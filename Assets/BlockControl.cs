@@ -12,6 +12,9 @@ public class BlockControl : Damagable {
 
 	public Color color;
 	float speed = 4f;
+
+
+
 	// Use this for initialization
 	void Start () {
 		startposition = transform.position;
@@ -27,9 +30,10 @@ public class BlockControl : Damagable {
 			Destroy (gameObject);
 		}
 
-		MoveForaward ();
+		MoveForward ();
 		if (Health <= 0) {
 			Destroy (gameObject);
+			HUDControl.singleton.IncreaseScore (gameObject);
 		} else if(Health < 40 && Health > 20){
 				GetComponent<Renderer> ().material = Dmg1;
 		} else if (Health < 20) {
@@ -38,7 +42,7 @@ public class BlockControl : Damagable {
 		ChangeColor ();
 	}
 
-	void MoveForaward(){
+	void MoveForward(){
 		transform.position += -transform.forward * speed * Time.deltaTime;
 	}
 

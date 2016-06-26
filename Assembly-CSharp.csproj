@@ -67,9 +67,12 @@
      <Compile Include="Assets\MobileControls.cs" />
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\Damagable.cs" />
+     <Compile Include="Assets\Scripts\HUDControl.cs" />
+     <Compile Include="Assets\Scripts\LevelControl.cs" />
      <Compile Include="Assets\Scripts\LookAtCamera.cs" />
      <Compile Include="Assets\Scripts\NetManager.cs" />
      <Compile Include="Assets\Scripts\NetMessage.cs" />
+     <Compile Include="Assets\Scripts\ScriptManager.cs" />
      <Compile Include="Assets\Scripts\ShipController.cs" />
      <Compile Include="Assets\Scripts\SyncPosWithServer.cs" />
      <Compile Include="Assets\Scripts\TeamSelect.cs" />
