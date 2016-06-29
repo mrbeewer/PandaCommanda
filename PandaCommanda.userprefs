@@ -1,14 +1,20 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BlockSpawner.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Lobby/Scripts/Lobby/LobbyMainMenu.cs">
     <Files>
-      <File FileName="Assets/BlockControl.cs" Line="44" Column="2" />
-      <File FileName="Assets/BlockSpawner.cs" Line="52" Column="54" />
+      <File FileName="Assets/Lobby/Scripts/Lobby/LobbyPlayerList.cs" Line="1" Column="1" />
+      <File FileName="Assets/BlockControl.cs" Line="1" Column="1" />
+      <File FileName="Assets/BlockSpawner.cs" Line="1" Column="1" />
       <File FileName="Assets/BlockChanger.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/ShipController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/LevelControl.cs" Line="43" Column="3" />
-      <File FileName="Assets/Scripts/TeamSelect.cs" Line="15" Column="40" />
-      <File FileName="Assets/Scripts/HUDControl.cs" Line="13" Column="8" />
+      <File FileName="Assets/Scripts/LevelControl.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/TeamSelect.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/HUDControl.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/NetManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/NetMessage.cs" Line="1" Column="1" />
+      <File FileName="Assets/SpawnMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets/Lobby/Scripts/Lobby/LobbyMainMenu.cs" Line="42" Column="40" />
+      <File FileName="Assets/Lobby/Scripts/Lobby/LobbyManager.cs" Line="262" Column="38" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
