@@ -66,13 +66,19 @@
      <Compile Include="Assets\Lobby\Scripts\Lobby\LobbyTopPanel.cs" />
      <Compile Include="Assets\MobileControls.cs" />
      <Compile Include="Assets\Scripts\Bullet.cs" />
+     <Compile Include="Assets\Scripts\ChangeWeaponsControl.cs" />
      <Compile Include="Assets\Scripts\Damagable.cs" />
      <Compile Include="Assets\Scripts\HUDControl.cs" />
      <Compile Include="Assets\Scripts\LevelControl.cs" />
      <Compile Include="Assets\Scripts\LookAtCamera.cs" />
      <Compile Include="Assets\Scripts\NetManager.cs" />
      <Compile Include="Assets\Scripts\NetMessage.cs" />
+<<<<<<< HEAD
      <Compile Include="Assets\Scripts\ScriptManager.cs" />
+=======
+     <Compile Include="Assets\Scripts\Projectile.cs" />
+     <Compile Include="Assets\Scripts\Rocket.cs" />
+>>>>>>> upstream/master
      <Compile Include="Assets\Scripts\ShipController.cs" />
      <Compile Include="Assets\Scripts\SyncPosWithServer.cs" />
      <Compile Include="Assets\Scripts\TeamSelect.cs" />

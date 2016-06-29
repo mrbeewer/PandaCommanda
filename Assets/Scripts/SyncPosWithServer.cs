@@ -7,7 +7,7 @@ public class SyncPosWithServer : NetworkBehaviour {
 	[SyncVar]
 	Vector3 syncPos;
 	Vector3 lastPos;
-	float learpSpeed = 5;
+	float learpSpeed = 20;
 	float movementSendRateThreshold = .05f;
 	[SyncVar]
 	Quaternion syncRotation;
@@ -18,7 +18,6 @@ public class SyncPosWithServer : NetworkBehaviour {
 		if (!isLocalPlayer) {
 			transform.position = Vector3.Lerp(transform.position, syncPos, Time.deltaTime * learpSpeed);
 			transform.rotation = syncRotation;
-
 		} else {
 			if (Vector3.Distance(transform.position, lastPos) >= movementSendRateThreshold) {
 				CmdSendPosRosToSerever (transform.position, transform.rotation);

@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 public class MobileControls : NetworkBehaviour {
 
 
+
 	// Use this for initialization
 	void Start () {
 		if (Application.isMobilePlatform || !NetworkServer.active) {
@@ -14,8 +15,9 @@ public class MobileControls : NetworkBehaviour {
 			GetComponent<Canvas> ().enabled = false;
 
 		}
-
+			
 	}
+
 
 
 }

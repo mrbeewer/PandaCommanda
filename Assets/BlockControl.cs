@@ -21,7 +21,7 @@ public class BlockControl : Damagable {
 		Health = 50;
 		ChangeColor ();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
@@ -87,8 +87,8 @@ public class BlockControl : Damagable {
 	}
 
 	public void TouchChangeColor(){
+
 		if (colorname == "Black" && (Application.isMobilePlatform || !NetworkServer.active) ) {
-			
 			if (FindObjectOfType<BlockChanger>().ChangeToRed) {
 				colorname = "Red";
 				GetComponent<Renderer> ().material.color = Color.red;

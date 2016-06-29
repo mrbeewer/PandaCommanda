@@ -1,5 +1,6 @@
-﻿<Properties StartupItem="Assembly-CSharp.csproj">
+﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Lobby/Scripts/Lobby/LobbyMainMenu.cs">
     <Files>
       <File FileName="Assets/Lobby/Scripts/Lobby/LobbyPlayerList.cs" Line="1" Column="1" />
@@ -15,6 +16,17 @@
       <File FileName="Assets/SpawnMenu.cs" Line="1" Column="1" />
       <File FileName="Assets/Lobby/Scripts/Lobby/LobbyMainMenu.cs" Line="42" Column="40" />
       <File FileName="Assets/Lobby/Scripts/Lobby/LobbyManager.cs" Line="262" Column="38" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Lobby/Scripts/Lobby/LobbyManager.cs">
+    <Files>
+      <File FileName="Assets/ShipWeaponControl.cs" Line="19" Column="20" />
+      <File FileName="Assets/Energytest.cs" Line="101" Column="19" />
+      <File FileName="Assets/Scripts/Projectile.cs" Line="16" Column="30" />
+      <File FileName="Assets/Scripts/Rocket.cs" Line="11" Column="16" />
+      <File FileName="Assets/Scripts/Bullet.cs" Line="10" Column="18" />
+      <File FileName="Assets/Lobby/Scripts/Lobby/LobbyManager.cs" Line="417" Column="4" />
+      <File FileName="Assets/Lobby/Scripts/Lobby/LobbyMainMenu.cs" Line="31" Column="35" />
+>>>>>>> upstream/master
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

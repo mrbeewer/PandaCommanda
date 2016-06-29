@@ -2,16 +2,25 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class Bullet : Projectile {
+public class Projectile : NetworkBehaviour {
 
+	protected Vector3 startposition;
+	public bool SpawnedOnThisClient = false;
+	public int Damage = 10;
 
+	public bool isRed = false;
+
+	public int EnergyNeeded = 10;
+
+	public float projectileSpeed = 10;
+	public float ShootFreq = 10;
+	// Use this for initialization
 	void Start () {
-		projectileSpeed = 20;
-		ShootFreq = 20;
+
 		startposition = transform.position;
 		GetComponent<Rigidbody> ().velocity = transform.up * projectileSpeed;
 
-		CmdChangeColor ();
+		//CmdChangeColor ();
 	}
 
 	// Update is called once per frame
@@ -25,7 +34,7 @@ public class Bullet : Projectile {
 	}
 
 	void OnCollisionEnter(Collision col){
-
+		
 		if (NetworkServer.active) {
 			if (col.gameObject.GetComponent<Damagable> ()) {
 				if (col.gameObject.GetComponent<Damagable> ().isRed == isRed && col.gameObject.GetComponent<Damagable> ().colorname != "Black") {
@@ -33,13 +42,16 @@ public class Bullet : Projectile {
 				} 
 			}
 		}
-
-		if (!col.gameObject.GetComponent<ShipController>()) {
-			Destroy (gameObject);
-		}
-
-		//Destroy (gameObject);
+		Destroy (gameObject);
 	}
-		
-		
+
+
+	protected void CmdChangeColor(){
+		GetComponent<Renderer> ().material.color = isRed ? Color.red : Color.blue;
+	}
+
+
+	void ChangeColor(bool value){
+		GetComponent<Renderer> ().material.color = isRed ? Color.red : Color.blue;
+	}
 }

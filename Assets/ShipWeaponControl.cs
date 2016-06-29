@@ -5,13 +5,30 @@ using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine.UI;
 
 public class ShipWeaponControl : NetworkBehaviour {
-	public float BulletSpeed = 30;
-	public GameObject Bullet;
+	public GameObject projectile;
+
+	public GameObject Projectile {
+		get {
+			return projectile;
+		}
+		set {
+
+			if (value.GetComponent<Rocket>()) {
+				ShootFreq = 3;
+			} else {
+				ShootFreq = 20;
+			}
+
+			projectile = value;
+		}
+	}
+
 	bool canShoot = true;
-	public float ShootFreq; // per second
+	float ShootFreq = 20;
 	float freqCounter;
 
-	bool isRed = false;
+	[SyncVar]
+	public bool isRed = false;
 
 	public bool IsRed {
 		get {
@@ -23,25 +40,33 @@ public class ShipWeaponControl : NetworkBehaviour {
 		}
 	}
 
+
+
+	#region test
+	ChangeWeaponsControl chngweapon;
+	#endregion
 	// Use this for initialization
 	void Start () {
 		freqCounter = 30 / ShootFreq;
+
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
 		//Controls for player
-		if (isLocalPlayer) {
+		if (isLocalPlayer && isServer) {
 
 			//Fire1 is space on desktop and a button on mobile
 			if (CrossPlatformInputManager.GetButtonDown("Fire1")) {
-				CmdShoot (BulletSpeed);
+				CmdShoot ();
 			}
 
 			if (Input.GetKeyDown(KeyCode.F)) {
 				ToggleBulletCollor ();
 			}
+
 
 		}
 	}
@@ -56,14 +81,14 @@ public class ShipWeaponControl : NetworkBehaviour {
 	/// </summary>
 	/// <param name="speedToFireBullet">Speed to fire bullet.</param>
 	[Command]
-	void CmdShoot(float speedToFireBullet){
-		if (canShoot && FindObjectOfType<EnergyControls>().DepletEnergy(IsRed, Bullet.GetComponent<Bullet>().EnergyNeeded)) {
-			GameObject temp = Instantiate (Bullet) as GameObject;
+	void CmdShoot(){
+		if (canShoot && FindObjectOfType<EnergyControls>().DepletEnergy(IsRed, projectile.GetComponent<Projectile>().EnergyNeeded)) {
+			GameObject temp = Instantiate (projectile) as GameObject;
 			temp.transform.position = gameObject.transform.FindChild ("Gun").position;
 			temp.transform.rotation = gameObject.transform.FindChild ("Gun").rotation;
 
-			temp.GetComponent<Bullet> ().isRed = isRed;
-			RpcShoot (BulletSpeed, isRed);
+			temp.GetComponent<Projectile> ().isRed = isRed;
+			RpcShoot (isRed);
 			StartCoroutine (ShootTimer ());
 
 		}
@@ -74,15 +99,15 @@ public class ShipWeaponControl : NetworkBehaviour {
 	/// </summary>
 	/// <param name="speedToFireBullet">Speed to fire bullet.</param>
 	[ClientRpc]
-	void RpcShoot(float speedToFireBullet, bool _isred){
+	void RpcShoot(bool _isred){
 
 		if (isServer) {
 			return;
 		}
-			GameObject temp = Instantiate (Bullet) as GameObject;
+			GameObject temp = Instantiate (projectile) as GameObject;
 			temp.transform.position = gameObject.transform.FindChild ("Gun").position;
 			temp.transform.rotation = gameObject.transform.FindChild ("Gun").rotation;
-			temp.GetComponent<Bullet> ().isRed = _isred;
+			temp.GetComponent<Projectile> ().isRed = _isred;
 
 			//temp.GetComponent<Rigidbody> ().velocity = temp.transform.up * speedToFireBullet;
 
@@ -90,12 +115,9 @@ public class ShipWeaponControl : NetworkBehaviour {
 
 	IEnumerator ShootTimer(){
 		canShoot = false;
-		print (ShootFreq);
 		yield return new WaitForSeconds (1f / ShootFreq);
 		canShoot = true;
 	}
-
-
 
 
 }

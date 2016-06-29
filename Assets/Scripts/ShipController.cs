@@ -35,8 +35,8 @@ public class ShipController : NetworkBehaviour {
 		
 		Hori = CrossPlatformInputManager.GetAxis ("Horizontal");
 
+
 		if (isLocalPlayer) {
-			
 			transform.position += transform.right * PlayerSpeed * Time.deltaTime * Hori;
 		}
 	}
