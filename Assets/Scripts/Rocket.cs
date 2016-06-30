@@ -29,27 +29,7 @@ public class Rocket : Projectile {
 		}
 
 	}
-
-	void OnCollisionEnter(Collision col){
-
-		if (NetworkServer.active) {
-			if (col.gameObject.GetComponent<Damagable> ()) {
-				if (col.gameObject.GetComponent<Damagable> ().isRed == isRed && col.gameObject.GetComponent<Damagable> ().colorname != "Black") {
-					col.gameObject.GetComponent<Damagable> ().TakeDamage (Damage);
-				} 
-				Destroy (gameObject);
-			}
-		}
-
-		if (!col.gameObject.GetComponent<ShipController>()) {
-			Destroy (gameObject);
-		}
-
-		//HACK
-		//Destroy (gameObject);
-
-
-	}
+		
 
 	void ChangeColor(){
 		GetComponent<Renderer> ().material.color = isRed ? Color.red : Color.blue;

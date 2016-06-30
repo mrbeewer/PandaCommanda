@@ -23,6 +23,8 @@ public class ShipWeaponControl : NetworkBehaviour {
 		}
 	}
 
+	Image CurrentColorBar;
+
 	bool canShoot = true;
 	float ShootFreq = 20;
 	float freqCounter;
@@ -48,18 +50,26 @@ public class ShipWeaponControl : NetworkBehaviour {
 	// Use this for initialization
 	void Start () {
 		freqCounter = 30 / ShootFreq;
-
-
+		//print(GameObject.Find("CurrentColorDesk").name);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (CurrentColorBar == null) {
+			try {
+				CurrentColorBar = GameObject.Find ("CurrentColorDesk").GetComponent<Image> ();
+				CurrentColorBar.color = Color.blue;
+			} catch (System.Exception ex) {
+				
+			}
+		}
 
 		//Controls for player
 		if (isLocalPlayer && isServer) {
 
 			//Fire1 is space on desktop and a button on mobile
 			if (CrossPlatformInputManager.GetButtonDown("Fire1")) {
+				//TODO change so that the user needs only to hold down the fire button
 				CmdShoot ();
 			}
 
@@ -72,7 +82,18 @@ public class ShipWeaponControl : NetworkBehaviour {
 	}
 
 	void ToggleBulletCollor(){
-		IsRed = IsRed ? false : true;
+		IsRed = !IsRed;
+
+			if (isRed) {
+				CurrentColorBar.color = Color.red;
+			} else {
+				CurrentColorBar.color = Color.blue;
+			}
+
+
+
+		//CurrentColorBar.color = IsRed ? Color.red : Color.blue;
+
 	}
 
 	/// <summary>
@@ -113,6 +134,11 @@ public class ShipWeaponControl : NetworkBehaviour {
 
 	}
 
+	/// <summary>
+	/// Changes the canShoot bool depending on the shot freq of the projectile. Once that time has elapsed 
+	/// canShoot = true allowing the user to shoot.
+	/// </summary>
+	/// <returns>The timer.</returns>
 	IEnumerator ShootTimer(){
 		canShoot = false;
 		yield return new WaitForSeconds (1f / ShootFreq);

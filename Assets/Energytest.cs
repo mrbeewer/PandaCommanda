@@ -2,7 +2,10 @@
 using System.Collections;
 using UnityEngine.Networking;
 using UnityEngine.UI;
-
+/// <summary>
+/// MUST BE ON PLAYER CONTROLED GAMEOBJECT.
+/// Provides controls for energy supply and energycontrols for mobile
+/// </summary>
 public class Energytest : NetworkBehaviour {
 
 	EnergyControls energyControls;
@@ -17,6 +20,7 @@ public class Energytest : NetworkBehaviour {
 	// Use this for initialization
 	void Start () {
 		if (!isServer) {
+			//Adds functions to button when the player is spawned
 			GameObject.Find ("Red").GetComponent<Button> ().onClick.AddListener(ToggleReplenishRed);
 			GameObject.Find ("Blue").GetComponent<Button> ().onClick.AddListener (ToggleReplenishBlue);
 
@@ -32,7 +36,7 @@ public class Energytest : NetworkBehaviour {
 		if (isLocalPlayer) {
 
 			if (enableReplinish){
-				CmdDoStuff (isRed);
+				CmdAddEnergy (isRed);
 				enableReplinish = false;
 			}
 
@@ -55,8 +59,12 @@ public class Energytest : NetworkBehaviour {
 		isRed = false;
 	}
 
+	/// <summary>
+	/// Adds energy to EnergyControls based to if the (mobile)user has red or bue selected
+	/// </summary>
+	/// <param name="isRed">If set to <c>true</c> is red.</param>
 	[Command]
-	public void CmdDoStuff(bool isRed){
+	public void CmdAddEnergy(bool isRed){
 		if (energyControls == null) {
 			energyControls = FindObjectOfType<EnergyControls> ();
 
@@ -75,6 +83,10 @@ public class Energytest : NetworkBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Used by the energy supply. Destroys the object provided.
+	/// </summary>
+	/// <param name="supply">Supply.</param>
 	[Command]
 	public void CmdDestroySuply(GameObject supply){
 		Destroy (supply);

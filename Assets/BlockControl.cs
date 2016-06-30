@@ -8,6 +8,7 @@ public class BlockControl : Damagable {
 	public Material Dmg2;
 
 	public GameObject EnergySupply;
+	float EnergySupplyDropPercentage = 10;
 
 	public Color color;
 	float speed = 4f;
@@ -66,12 +67,16 @@ public class BlockControl : Damagable {
 		}
 		int chance = Random.Range (0, 100); // chance to spawn energysupply
 
-		if (chance < 10) {
-			GameObject temp = Instantiate (EnergySupply) as GameObject;
-			temp.transform.position = gameObject.transform.position;
+		if (Application.isMobilePlatform || NetworkServer.active) {
+			if (chance < EnergySupplyDropPercentage) {
+				GameObject temp = Instantiate (EnergySupply) as GameObject;
+				temp.transform.position = gameObject.transform.position;
 
-			NetworkServer.Spawn (temp);
+				NetworkServer.Spawn (temp);
+				temp.SetActive (false);
+			}
 		}
+
 	}
 
 	public void TouchChangeColor(){

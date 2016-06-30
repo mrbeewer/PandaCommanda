@@ -23,23 +23,7 @@ public class Bullet : Projectile {
 		}
 
 	}
-
-	void OnCollisionEnter(Collision col){
-
-		if (NetworkServer.active) {
-			if (col.gameObject.GetComponent<Damagable> ()) {
-				if (col.gameObject.GetComponent<Damagable> ().isRed == isRed && col.gameObject.GetComponent<Damagable> ().colorname != "Black") {
-					col.gameObject.GetComponent<Damagable> ().TakeDamage (Damage);
-				} 
-			}
-		}
-
-		if (!col.gameObject.GetComponent<ShipController>()) {
-			Destroy (gameObject);
-		}
-
-		//Destroy (gameObject);
-	}
+		
 		
 		
 }
