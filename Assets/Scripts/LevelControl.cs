@@ -8,8 +8,9 @@ public class LevelControl : MonoBehaviour {
 	public static LevelControl singleton;
 
 	public Text LevelText;
-	public int currentLevel;
+	public int currentLevel = 0;
 	public GameObject BlockSpawnerObject;
+	public GameObject HUD;
 
 	private bool continueLevel = false;
 
@@ -28,10 +29,13 @@ public class LevelControl : MonoBehaviour {
 	}
 
 	void InitiateLevel() {
-		HUDControl.singleton.level++;
-		Debug.Log ("Start Level " + HUDControl.singleton.level);
-		if (HUDControl.singleton.level < 6) {
-			StartCoroutine (ShowLevelText (2, "Level " + HUDControl.singleton.level));
+		//HUDControl.singleton.level++;
+		currentLevel++;
+		HUD.GetComponent<HUDControl> ().UpdateLevel (currentLevel);
+		//HUDControl.singleton.UpdateLevel (currentLevel);
+		Debug.Log ("Start Level " + currentLevel);
+		if (currentLevel < 6) {
+			StartCoroutine (ShowLevelText (2, "Level " + currentLevel));
 			BlockSpawner.singleton.NewLevelStarted ();
 		} else {
 			StartCoroutine (ShowLevelText (10, "GAME OVER"));

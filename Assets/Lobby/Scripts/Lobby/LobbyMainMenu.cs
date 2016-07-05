@@ -35,12 +35,9 @@ namespace Prototype.NetworkLobby
         {
             lobbyManager.ChangeTo(lobbyPanel);
 			//HACK
-<<<<<<< HEAD
-            //lobbyManager.networkAddress = ipInput.text;
-			lobbyManager.networkAddress = "172.27.17.69";
-=======
+
             lobbyManager.networkAddress = ipInput.text;
->>>>>>> upstream/master
+			//lobbyManager.networkAddress = "192.168.4.122";
 			//lobbyManager.networkAddress = "127.0.0.1";
 
             lobbyManager.StartClient();

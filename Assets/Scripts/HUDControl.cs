@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 using System.Collections;
 
-public class HUDControl : MonoBehaviour {
+public class HUDControl : NetworkBehaviour {
 
 	public static HUDControl singleton;
 
-
+	[SyncVar (hook = "OnScoreChange")]
 	public int score = 0;
+	[SyncVar (hook = "OnLevelChange")]
 	public int level = 0;
 
 	public Text ScoreText;
@@ -26,9 +28,12 @@ public class HUDControl : MonoBehaviour {
 		LevelText = GameObject.Find ("HUD/Level").GetComponent<Text> ();
 	}
 	
-	// Update is called once per frame
-	void Update () {
+
+	void OnScoreChange (int score) {
 		ScoreText.text = "Score: " + score;
+	}
+
+	void OnLevelChange (int level) {
 		LevelText.text = "Level: " + level;
 	}
 
@@ -39,5 +44,9 @@ public class HUDControl : MonoBehaviour {
 		else
 			Debug.Log ("Score update sent from -- " + item.tag);
 
+	}
+
+	public void UpdateLevel(int currentLevel) {
+		level = currentLevel;
 	}
 }

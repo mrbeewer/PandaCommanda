@@ -33,7 +33,8 @@ public class BlockControl : Damagable {
 		MoveForward ();
 		if (Health <= 0) {
 			Destroy (gameObject);
-			HUDControl.singleton.IncreaseScore (gameObject);
+			if (isServer)
+				HUDControl.singleton.IncreaseScore (gameObject);
 		} else if(Health < 40 && Health > 20){
 				GetComponent<Renderer> ().material = Dmg1;
 		} else if (Health < 20) {
