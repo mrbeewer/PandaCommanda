@@ -24,8 +24,8 @@ public class Energytest : NetworkBehaviour {
 			GameObject.Find ("Red").GetComponent<Button> ().onClick.AddListener(ToggleReplenishRed);
 			GameObject.Find ("Blue").GetComponent<Button> ().onClick.AddListener (ToggleReplenishBlue);
 
-			GameObject.Find ("ChngBullet").GetComponent<Button> ().onClick.AddListener (ToggleToBullet);
-			GameObject.Find ("ChngRocket").GetComponent<Button> ().onClick.AddListener (ToggleToRocket);
+			//GameObject.Find ("ChngBullet").GetComponent<Button> ().onClick.AddListener (ToggleToBullet);
+			//GameObject.Find ("ChngRocket").GetComponent<Button> ().onClick.AddListener (ToggleToRocket);
 		}
 
 	}   

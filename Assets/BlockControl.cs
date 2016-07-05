@@ -4,6 +4,7 @@ using UnityEngine.Networking;
 
 public class BlockControl : Damagable {
 
+	Vector3 startposition;
 	public Material Dmg1;
 	public Material Dmg2;
 
@@ -12,17 +13,29 @@ public class BlockControl : Damagable {
 
 	public Color color;
 	float speed = 4f;
+
+
+
 	// Use this for initialization
 	void Start () {
+		startposition = transform.position;
 		Health = 50;
 		ChangeColor ();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		MoveForaward ();
+
+		//once block is far enough away destroy it
+		if (Vector3.Distance(startposition, transform.position) > 60) {
+			Destroy (gameObject);
+		}
+
+		MoveForward ();
 		if (Health <= 0) {
 			Destroy (gameObject);
+			if (isServer)
+				HUDControl.singleton.IncreaseScore (gameObject);
 		} else if(Health < 40 && Health > 20){
 				GetComponent<Renderer> ().material = Dmg1;
 		} else if (Health < 20) {
@@ -31,7 +44,7 @@ public class BlockControl : Damagable {
 		ChangeColor ();
 	}
 
-	void MoveForaward(){
+	void MoveForward(){
 		transform.position += -transform.forward * speed * Time.deltaTime;
 	}
 
@@ -80,8 +93,8 @@ public class BlockControl : Damagable {
 	}
 
 	public void TouchChangeColor(){
-		if (colorname == "Black" && (!NetworkServer.active || Application.isMobilePlatform)) {
 
+		if (colorname == "Black" && (Application.isMobilePlatform || !NetworkServer.active) ) {
 			if (FindObjectOfType<BlockChanger>().ChangeToRed) {
 				colorname = "Red";
 				GetComponent<Renderer> ().material.color = Color.red;
