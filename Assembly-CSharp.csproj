@@ -69,11 +69,14 @@
      <Compile Include="Assets\Scripts\ChangeWeaponsControl.cs" />
      <Compile Include="Assets\Scripts\Damagable.cs" />
 <<<<<<< HEAD
+<<<<<<< HEAD
      <Compile Include="Assets\Scripts\DesktopControls.cs" />
 =======
      <Compile Include="Assets\Scripts\HUDControl.cs" />
      <Compile Include="Assets\Scripts\LevelControl.cs" />
 >>>>>>> master
+=======
+>>>>>>> parent of 6e1f6f8... Minor update
      <Compile Include="Assets\Scripts\LookAtCamera.cs" />
      <Compile Include="Assets\Scripts\NetManager.cs" />
      <Compile Include="Assets\Scripts\NetMessage.cs" />

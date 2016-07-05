@@ -16,9 +16,11 @@ public class Projectile : NetworkBehaviour {
 	public float ShootFreq = 10;
 	// Use this for initialization
 	void Start () {
+
 		startposition = transform.position;
 		GetComponent<Rigidbody> ().velocity = transform.up * projectileSpeed;
 
+		//CmdChangeColor ();
 	}
 
 	// Update is called once per frame
@@ -31,10 +33,6 @@ public class Projectile : NetworkBehaviour {
 
 	}
 
-	void OnEnable(){
-		gameObject.layer = LayerMask.NameToLayer ("Projectiles");
-	}
-
 	void OnCollisionEnter(Collision col){
 		
 		if (NetworkServer.active) {
@@ -42,13 +40,9 @@ public class Projectile : NetworkBehaviour {
 				if (col.gameObject.GetComponent<Damagable> ().isRed == isRed && col.gameObject.GetComponent<Damagable> ().colorname != "Black") {
 					col.gameObject.GetComponent<Damagable> ().TakeDamage (Damage);
 				} 
-				Destroy (gameObject);
 			}
 		}
-
-		if (!col.gameObject.GetComponent<ShipController>()) {
-			Destroy (gameObject);
-		}
+		Destroy (gameObject);
 	}
 
 
