@@ -3,6 +3,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/EnergySupply.cs">
     <Files>
       <File FileName="Assets/EnergySupply.cs" Line="21" Column="11" />
@@ -29,6 +30,10 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Lobby/Scripts/Lobby/LobbyManager.cs">
     <Files>
 >>>>>>> parent of 6e1f6f8... Minor update
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Lobby/Scripts/Lobby/LobbyManager.cs">
+    <Files>
+>>>>>>> parent of 6e1f6f8... Minor update
       <File FileName="Assets/ShipWeaponControl.cs" Line="19" Column="20" />
       <File FileName="Assets/Energytest.cs" Line="101" Column="19" />
       <File FileName="Assets/Scripts/Projectile.cs" Line="16" Column="30" />
@@ -37,6 +42,9 @@
       <File FileName="Assets/Lobby/Scripts/Lobby/LobbyManager.cs" Line="417" Column="4" />
       <File FileName="Assets/Lobby/Scripts/Lobby/LobbyMainMenu.cs" Line="31" Column="35" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 6e1f6f8... Minor update
+=======
 >>>>>>> parent of 6e1f6f8... Minor update
 =======
 >>>>>>> parent of 6e1f6f8... Minor update
