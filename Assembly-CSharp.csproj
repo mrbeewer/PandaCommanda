@@ -82,7 +82,6 @@
      <Compile Include="Assets\Scripts\TeamsInfo.cs" />
      <Compile Include="Assets\ShipWeaponControl.cs" />
      <Compile Include="Assets\SpawnMenu.cs" />
-     <Compile Include="Assets\Test.cs" />
      <Compile Include="Assets\testcript.cs" />
      <None Include="Assets\Lobby\Documentation.txt" />
      <None Include="Assets\Lobby\Instruction.txt" />
